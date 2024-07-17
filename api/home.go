@@ -1,16 +1,15 @@
 package api
 
 import (
-	"html/template"
+	"net/http"
 
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 )
 
-func RouteHome(router *gin.Engine) {
-	router.GET("/", getHome)
+func RouteHome(engine *echo.Echo) {
+	engine.GET("/", getHome)
 }
 
-func getHome(context *gin.Context) {
-	homeTemplate := template.Must(template.ParseFiles("templates/base.html", "templates/home.html"))
-	homeTemplate.Execute(context.Writer, nil)
+func getHome(context echo.Context) error {
+	return context.Render(http.StatusOK, "home.html", nil)
 }

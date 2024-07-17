@@ -1,16 +1,38 @@
 package api
 
 import (
-	"net/http"
+	"html/template"
+	"io"
 
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
-func Route(engine *gin.Engine) {
+type TemplateRenderer struct {
+	templates *template.Template
+}
+
+func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, context echo.Context) error {
+	return t.templates.ExecuteTemplate(w, name, data)
+}
+
+func Route(engine *echo.Echo) {
 	RouteHome(engine)
 	RouteCmd(engine)
 }
 
-func Static(engine *gin.Engine) {
-	engine.StaticFS("/assets", http.Dir("assets"))
+func AddStatic(engine *echo.Echo) {
+	engine.Static("/assets", "assets")
+}
+
+func AddRender(engine *echo.Echo) {
+	t := &TemplateRenderer{
+		templates: template.Must(template.ParseGlob("templates/*.html")),
+	}
+
+	engine.Renderer = t
+}
+
+func AddLogger(engine *echo.Echo) {
+	engine.Use(middleware.Logger())
 }

@@ -1,22 +1,22 @@
 package api
 
 import (
-	"html/template"
+	"net/http"
 
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 )
 
-type RunCmd struct {
+type Command struct {
 	Cmd string `form:"cmd"`
 }
 
-func RouteCmd(router *gin.Engine) {
-	router.POST("/cmd/run", run)
+func RouteCmd(engine *echo.Echo) {
+	engine.POST("/cmd/run", run)
 }
 
-func run(context *gin.Context) {
-	var runCmd RunCmd
-	context.Bind(&runCmd)
-	template := template.Must(template.ParseFiles("templates/output.html"))
-	template.Execute(context.Writer, runCmd.Cmd)
+func run(context echo.Context) error {
+	cmd := new(Command)
+	context.Bind(cmd)
+
+	return context.Render(http.StatusOK, "run", cmd)
 }

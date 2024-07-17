@@ -2,14 +2,16 @@ package main
 
 import (
 	"github.com/fhdiaze/frugi/api"
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	engine := gin.Default()
+	engine := echo.New()
 
 	api.Route(engine)
-	api.Static(engine)
+	api.AddStatic(engine)
+	api.AddRender(engine)
+	api.AddLogger(engine)
 
-	engine.Run()
+	engine.Logger.Fatal(engine.Start(":8080"))
 }
