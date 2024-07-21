@@ -1,11 +1,11 @@
 {{ define "content" }}
-<h1>Frugal</h1>
-<form hx-post="/cmd/run" hx-target="#outputs" hx-swap="afterbegin"></form>
-    <label for="cmd">Command:</label>
-    <input id="cmd" name="cmd" type="text">
-    <button type="submit">Send</button>
-</form>
-<table id="outputs"></table>
+<div>
+    <form hx-post="/cmd.run" hx-target="#outputs" hx-swap="afterbegin" hx-on::after-request="if(event.detail.successful) this.reset()" class="grid--two-col">
+        <input id="cmd" name="cmd" type="search" placeholder="Ask" class="grid--two-col__left">
+        <button type="submit">►</button>
+    </form>
+</div>
+<div id="outputs"></div>
 {{ end }}
 
 {{ template "base.html" . }}

@@ -1,6 +1,5 @@
-{% extends "comps/output.html" %}
+{{ block "content" . }}
+<p>Hours: {{ .time }}</p>
+{{ end }}
 
-{% block content %}
-<p>Hours: {{ time }}</div>
-{% endblock %}
-
+{{ template "comp_result.html" . }}

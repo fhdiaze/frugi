@@ -19,18 +19,11 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, co
 func Route(engine *echo.Echo) {
 	RouteHome(engine)
 	RouteCmd(engine)
+	RoutePrice(engine)
 }
 
 func AddStatic(engine *echo.Echo) {
 	engine.Static("/assets", "assets")
-}
-
-func AddRender(engine *echo.Echo) {
-	t := &TemplateRenderer{
-		templates: template.Must(template.ParseGlob("templates/*.html")),
-	}
-
-	engine.Renderer = t
 }
 
 func AddLogger(engine *echo.Echo) {

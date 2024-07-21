@@ -10,7 +10,6 @@ func main() {
 
 	api.Route(engine)
 	api.AddStatic(engine)
-	api.AddRender(engine)
 	api.AddLogger(engine)
 
 	engine.Logger.Fatal(engine.Start(":8080"))

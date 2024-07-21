@@ -1,6 +1,5 @@
-{% extends "comps/output.html" %}
+{{ block "content" . }}
+<p>Price/Unit: ${{ .UnitPrice }}</p>
+{{ end }}
 
-{% block content %}
-<p>Price/Unit: ${{ unit_price }}</p>
-{% endblock %}
-
+{{ template "comp_result.html" }}
