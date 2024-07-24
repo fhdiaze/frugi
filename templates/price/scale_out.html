@@ -1,5 +1,5 @@
-{{ block "content" . }}
-<p>Price/Unit: ${{ .UnitPrice }}</p>
+{{ define "content" }}
+<p>Price/Unit: ${{ .Amount }}</p>
 {{ end }}
 
-{{ template "comp_result.html" }}
+{{ template "result.html" . }}
