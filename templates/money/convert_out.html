@@ -1,5 +1,5 @@
-{{ block "content" . }}
-<p>Hours: {{ .time }}</p>
+{{ define "content" }}
+<p>Hours: {{ . }}</p>
 {{ end }}
 
-{{ template "comp_result.html" . }}
+{{ template "result.html" . }}

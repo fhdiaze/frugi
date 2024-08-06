@@ -1,5 +1,5 @@
 {{ define "actions" }}
-<button type="submit" hx-post="/money.convert.run" hx-target="next #time" hx-swap="innerHTML" hx-include="next #convert-form">►</button>
+<button type="submit" hx-post="/web/money.convert.run" hx-target="next #time" hx-swap="innerHTML" hx-include="next #convert-form">►</button>
 {{ end }}
 
 {{ define "content" }}
@@ -12,4 +12,4 @@
 <dix id="time" />
 {{ end }}
 
-{{ template "comp_frame.html" }}
+{{ template "frame.html" . }}

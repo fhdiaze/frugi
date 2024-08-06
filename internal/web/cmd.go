@@ -1,4 +1,4 @@
-package api
+package web
 
 import (
 	"html/template"
@@ -14,8 +14,8 @@ var (
 	cmdListTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/cmd/list.html"))
 )
 
-func RouteCmd(engine *echo.Echo) {
-	engine.POST("/cmd.run", run)
+func RouteCmd(group *echo.Group) {
+	group.POST("/cmd.run", run)
 }
 
 func run(context echo.Context) error {
