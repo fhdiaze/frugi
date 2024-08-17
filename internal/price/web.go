@@ -1,10 +1,9 @@
-package web
+package price
 
 import (
 	"html/template"
 	"net/http"
 
-	"github.com/fhdiaze/frugi/internal/price"
 	"github.com/labstack/echo/v4"
 )
 
@@ -13,7 +12,7 @@ var (
 	scaleOutTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/comps/result.html", "templates/price/scale_out.html"))
 )
 
-func RoutePrice(group *echo.Group) {
+func Route(group *echo.Group) {
 	group.GET("/price.scale.get", handleGetScale)
 	group.POST("/price.scale.run", handleRunScale)
 }
@@ -23,14 +22,14 @@ func handleGetScale(context echo.Context) error {
 }
 
 func handleRunScale(context echo.Context) error {
-	var cmd price.RunScaleCmd
+	var cmd RunScaleCmd
 	err := context.Bind(&cmd)
 
 	if err != nil {
 		return context.String(http.StatusBadRequest, "bad request")
 	}
 
-	u, err := price.HandleRunScale(&cmd)
+	u, err := HandleRunScale(&cmd)
 
 	if err != nil {
 		return err

@@ -54,3 +54,14 @@ div:empty {
     margin-right: 3px;
     width: 100%;
 }
+
+.input-pair {
+    display: flex;
+    flex-direction: column;
+    margin: 3px;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,14 +1,23 @@
-{{  define "actions" }}
+{{ define "actions" }}
 <button type="submit" hx-post="web/price.scale.run" hx-target="next #unit-price" hx-swap="innerHTML" hx-include="next #scale-form">►</button>
 {{ end }}
 
 {{ define "content" }}
 <h4>Scale a price:</h4>
 <p>It allows scaling a price to unit price in order to compare it easily.</p>
-<form id="scale-form">
-    <input id="items" name="items" type="text" placeholder="Items" value="1">
-    <input id="size" name="size" type="text" placeholder="Size">
-    <input id="cost" name="cost" type="text" placeholder="Cost">
+<form id="scale-form" class="form">
+    <div class="input-pair">
+        <label for="items">Items</label>
+        <input id="items" name="items" type="text" placeholder="Items" value="1">
+    </div>
+    <div class="input-pair">
+        <label for="size">Size</label>
+        <input id="size" name="size" type="text" placeholder="Size">
+    </div>
+    <div class="input-pair">
+        <label for="cost">Cost</label>
+        <input id="cost" name="cost" type="text" placeholder="Cost">
+    </div>
 </form>
 <dix id="unit-price" />
 {{ end }}

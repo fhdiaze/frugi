@@ -9,7 +9,7 @@ type RunConvertCmd struct {
 	Amount     float64 `form:"amount"`
 }
 
-func HandleRunScale(cmd *RunConvertCmd) (time.Duration, error) {
+func HandleRunConvert(cmd *RunConvertCmd) (time.Duration, error) {
 	amount := FromMajor(cmd.Amount)
 	wage := FromMajor(cmd.HourlyWage)
 	hours := time.Duration(amount / wage)
