@@ -2,6 +2,10 @@
 <button type="submit" hx-post="/web/money.convert.run" hx-target="next #time" hx-swap="innerHTML" hx-include="next #convert-form">►</button>
 {{ end }}
 
+{{ define "frame-actions" }}
+<button hx-post="/web/money.convert.get" hx-target="#outputs" hx-swap="afterbegin" hx-replace-url="false">⧉</button>
+{{ end }}
+
 {{ define "content" }}
 <h4>Convert money to time:</h4>
 <p>It allows converting money to the amount of time required to earn that money so you know the real cost.</p>
