@@ -1,6 +1,6 @@
 <div id="frame" class="frame">
     <div id="frame-actions" class="frame__actions grid--two-col">
-        <div class="grid--two-col__left">{{ block "actions" . }} {{ end }}</div>
+        <div class="grid--two-col__left">{{ block "actions" . }}{{ end }}</div>
         <div class="grid--row">
             {{ block "frame-actions" . }}{{ end }}
             <button hx-get hx-target="closest #frame" hx-swap="delete">🗙</button>

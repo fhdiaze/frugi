@@ -9,7 +9,7 @@ import (
 
 var (
 	scaleGetTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/price/scale.html"))
-	scaleOutTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/comps/result.html", "templates/price/scale_out.html"))
+	scaleOutTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/price/scale_out.html"))
 )
 
 func Route(group *echo.Group) {

@@ -9,7 +9,7 @@ import (
 
 var (
 	convertGetTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/money/convert.html"))
-	convertOutTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/comps/result.html", "templates/money/convert_out.html"))
+	convertOutTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/money/convert_out.html"))
 )
 
 func Route(group *echo.Group) {

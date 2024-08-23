@@ -1,5 +1,3 @@
-{{ define "content" }}
+{{ block "content" . }}
 <p>Hours: {{ . }}</p>
 {{ end }}
-
-{{ template "result.html" . }}

@@ -1,6 +1,3 @@
 {{ block "content" . }}
-<div class="input-pair">
-    <label for="unit-price">Price/Unit</label>
-    <span id="unit-price">${{ .Amount }}</span>
-</div>
+<span id="unit-price">Price/Unit: ${{ .Amount }}</span>
 {{ end }}
