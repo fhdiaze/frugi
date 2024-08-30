@@ -28,10 +28,6 @@ h1, h2, h3 {
     flex-direction: row;
 }
 
-div:empty {
-    display: none;
-}
-
 .footer {
     text-align: center;
 }
