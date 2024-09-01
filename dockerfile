@@ -5,7 +5,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY ./ ./
-RUN CGO_ENABLED=0 GOOS=linux go build -o /frugi ./cmd/frugi
+RUN CGO_ENABLED=0 GOOS=linux go build -o ./frugi ./cmd/frugi
 
 
 FROM alpine:edge
