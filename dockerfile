@@ -13,5 +13,7 @@ FROM alpine:edge
 WORKDIR /app
 
 COPY --from=build /app/frugi .
+COPY ./assets ./assets
+COPY ./templates ./templates
 
 ENTRYPOINT ["/app/frugi"]
