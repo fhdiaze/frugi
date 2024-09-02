@@ -24,3 +24,7 @@ func AddStatic(engine *echo.Echo) {
 func AddLogger(engine *echo.Echo) {
 	engine.Use(middleware.Logger())
 }
+
+func AddCors(engine *echo.Echo) {
+	engine.Use(middleware.CORS())
+}
