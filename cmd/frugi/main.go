@@ -11,6 +11,7 @@ func main() {
 	web.Route(engine)
 	web.AddStatic(engine)
 	web.AddLogger(engine)
+	web.AddCors(engine)
 
 	engine.Logger.Fatal(engine.Start(":80"))
 }
