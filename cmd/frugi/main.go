@@ -12,5 +12,5 @@ func main() {
 	web.AddStatic(engine)
 	web.AddLogger(engine)
 
-	engine.Logger.Fatal(engine.Start(":8080"))
+	engine.Logger.Fatal(engine.Start(":80"))
 }
