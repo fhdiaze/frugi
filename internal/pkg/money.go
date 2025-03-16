@@ -1,4 +1,4 @@
-package money
+package pkg
 
 import (
 	"math"

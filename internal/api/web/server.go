@@ -1,20 +1,28 @@
 package web
 
 import (
-	"github.com/fhdiaze/frugi/internal/cmd"
-	"github.com/fhdiaze/frugi/internal/money"
-	"github.com/fhdiaze/frugi/internal/price"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
+
+func StartServer() {
+	engine := echo.New()
+
+	Route(engine)
+	AddStatic(engine)
+	AddLogger(engine)
+	AddCors(engine)
+
+	engine.Logger.Fatal(engine.Start(":80"))
+}
 
 func Route(engine *echo.Echo) {
 	group := engine.Group("/web")
 
 	RouteHome(engine)
-	cmd.Route(group)
-	price.Route(group)
-	money.Route(group)
+	RouteCmd(group)
+	RoutePrice(group)
+	RouteMoney(group)
 }
 
 func AddStatic(engine *echo.Echo) {

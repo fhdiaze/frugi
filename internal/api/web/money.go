@@ -1,9 +1,10 @@
-package money
+package web
 
 import (
 	"html/template"
 	"net/http"
 
+	"github.com/fhdiaze/frugi/internal/core/money"
 	"github.com/labstack/echo/v4"
 )
 
@@ -12,7 +13,7 @@ var (
 	convertOutTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/money/convert_out.html"))
 )
 
-func Route(group *echo.Group) {
+func RouteMoney(group *echo.Group) {
 	group.GET("/money.convert.get", handleGetConvert)
 	group.POST("/money.convert.run", handleRunConvert)
 }
@@ -22,14 +23,14 @@ func handleGetConvert(context echo.Context) error {
 }
 
 func handleRunConvert(context echo.Context) error {
-	var cmd RunConvertCmd
+	var cmd money.RunConvertCmd
 	err := context.Bind(&cmd)
 
 	if err != nil {
 		return context.String(http.StatusInternalServerError, "Internal Server Error")
 	}
 
-	u, err := HandleRunConvert(&cmd)
+	u, err := money.HandleRunConvert(&cmd)
 
 	if err != nil {
 		return err
