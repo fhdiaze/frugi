@@ -3,16 +3,16 @@ package money
 import (
 	"testing"
 
-	"github.com/fhdiaze/frugi/internal/money"
+	"github.com/fhdiaze/frugi/internal/pkg/types"
 )
 
-func TestFromMajor(t *testing.T) {
+func TestMoneyFromMajor(t *testing.T) {
 	// Arrange
 	amount := 5.3399333
-	wanted := money.Money(amount)
+	wanted := types.MoneyFromMajor(amount)
 
 	// Act
-	got := money.FromMajor(amount)
+	got := types.MoneyFromMajor(amount)
 
 	// Assert
 	if got != 534 {

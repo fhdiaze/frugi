@@ -1,4 +1,4 @@
-package pkg
+package types
 
 import (
 	"math"
@@ -6,6 +6,6 @@ import (
 
 type Money int64
 
-func FromMajor(amount float64) Money {
+func MoneyFromMajor(amount float64) Money {
 	return Money(math.Round(amount * 100))
 }

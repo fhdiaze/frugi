@@ -26,7 +26,7 @@ func Route(engine *echo.Echo) {
 }
 
 func AddStatic(engine *echo.Echo) {
-	engine.Static("/assets", "assets")
+	engine.Static("web/assets", "assets")
 }
 
 func AddLogger(engine *echo.Echo) {

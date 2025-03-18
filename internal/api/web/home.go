@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	homeTemplate = template.Must(template.ParseFiles("templates/comps/header.html", "templates/comps/footer.html", "templates/comps/base.html", "templates/home.html"))
+	homeTemplate = template.Must(template.ParseFiles("web/templates/comps/header.html", "web/templates/comps/footer.html", "web/templates/comps/base.html", "web/templates/home.html"))
 )
 
 func RouteHome(engine *echo.Echo) {

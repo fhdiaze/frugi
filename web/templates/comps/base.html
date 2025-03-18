@@ -16,10 +16,10 @@
     {{ block "head" . }}{{ end }}
 </head>
 <body>
-    {{ template "header.html" }}
+    {{ template "header.html" . }}
     <div id="content">
         {{ block "content" . }}{{ end }}
     </div>
-    {{ template "footer.html" }}
+    {{ template "footer.html" . }}
 </body>
 </html>

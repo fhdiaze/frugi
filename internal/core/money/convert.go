@@ -2,6 +2,8 @@ package money
 
 import (
 	"time"
+
+	"github.com/fhdiaze/frugi/internal/pkg/types"
 )
 
 type RunConvertCmd struct {
@@ -10,8 +12,8 @@ type RunConvertCmd struct {
 }
 
 func HandleRunConvert(cmd *RunConvertCmd) (time.Duration, error) {
-	amount := FromMajor(cmd.Amount)
-	wage := FromMajor(cmd.HourlyWage)
+	amount := types.MoneyFromMajor(cmd.Amount)
+	wage := types.MoneyFromMajor(cmd.HourlyWage)
 	hours := time.Duration(amount / wage)
 
 	return time.Hour * hours, nil

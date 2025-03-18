@@ -5,12 +5,13 @@ import (
 	"net/http"
 
 	"github.com/fhdiaze/frugi/internal/core/price"
+	"github.com/fhdiaze/frugi/web/templates"
 	"github.com/labstack/echo/v4"
 )
 
 var (
-	scaleGetTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/price/scale.html"))
-	scaleOutTemplate = template.Must(template.ParseFiles("templates/comps/frame.html", "templates/price/scale_out.html"))
+	scaleGetTemplate = template.Must(template.ParseFS(templates.TemplatesFS, "comps/frame.html", "price/scale.html"))
+	scaleOutTemplate = template.Must(template.ParseFiles("web/templates/comps/frame.html", "web/templates/price/scale_out.html"))
 )
 
 func RoutePrice(group *echo.Group) {
@@ -24,14 +25,12 @@ func handleGetScale(context echo.Context) error {
 
 func handleRunScale(context echo.Context) error {
 	var cmd price.RunScaleCmd
-	err := context.Bind(&cmd)
 
-	if err != nil {
+	if err := context.Bind(&cmd); err != nil {
 		return context.String(http.StatusBadRequest, "bad request")
 	}
 
 	u, err := price.HandleRunScale(&cmd)
-
 	if err != nil {
 		return err
 	}
