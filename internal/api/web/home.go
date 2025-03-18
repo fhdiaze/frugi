@@ -3,11 +3,13 @@ package web
 import (
 	"html/template"
 
+	"github.com/fhdiaze/frugi/static"
 	"github.com/labstack/echo/v4"
 )
 
 var (
-	homeTemplate = template.Must(template.ParseFiles("web/templates/comps/header.html", "web/templates/comps/footer.html", "web/templates/comps/base.html", "web/templates/home.html"))
+	homeTemplate = template.Must(template.ParseFS(static.TemplatesFS,
+		"templates/comps/header.html", "templates/comps/footer.html", "templates/comps/base.html", "templates/home.html"))
 )
 
 func RouteHome(engine *echo.Echo) {

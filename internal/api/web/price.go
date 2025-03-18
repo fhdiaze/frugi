@@ -5,13 +5,13 @@ import (
 	"net/http"
 
 	"github.com/fhdiaze/frugi/internal/core/price"
-	"github.com/fhdiaze/frugi/web/templates"
+	"github.com/fhdiaze/frugi/static"
 	"github.com/labstack/echo/v4"
 )
 
 var (
-	scaleGetTemplate = template.Must(template.ParseFS(templates.TemplatesFS, "comps/frame.html", "price/scale.html"))
-	scaleOutTemplate = template.Must(template.ParseFiles("web/templates/comps/frame.html", "web/templates/price/scale_out.html"))
+	scaleGetTemplate = template.Must(template.ParseFS(static.TemplatesFS, "templates/comps/frame.html", "templates/price/scale.html"))
+	scaleOutTemplate = template.Must(template.ParseFS(static.TemplatesFS, "templates/comps/frame.html", "templates/price/scale_out.html"))
 )
 
 func RoutePrice(group *echo.Group) {

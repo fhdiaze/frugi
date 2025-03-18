@@ -1,6 +1,7 @@
 package web
 
 import (
+	"github.com/fhdiaze/frugi/static"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -26,7 +27,7 @@ func Route(engine *echo.Echo) {
 }
 
 func AddStatic(engine *echo.Echo) {
-	engine.Static("web/assets", "assets")
+	engine.StaticFS("static", static.AssetsFS)
 }
 
 func AddLogger(engine *echo.Echo) {

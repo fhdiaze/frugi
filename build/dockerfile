@@ -1,10 +1,13 @@
-FROM golang:1.23.0-alpine3.20 AS build
+FROM golang:1-alpine3.20 AS build
+
+ARG SDIR=../
 
 WORKDIR /app
-COPY go.mod go.sum ./
+
+COPY $SDIR/go.mod $SDIR/go.sum ./
 RUN go mod download
 
-COPY ./ ./
+COPY $SDIR/ ./
 RUN CGO_ENABLED=0 GOOS=linux go build -o ./frugi ./cmd/frugi
 
 
@@ -13,7 +16,5 @@ FROM alpine:edge
 WORKDIR /app
 
 COPY --from=build /app/frugi .
-COPY ./assets ./assets
-COPY ./templates ./templates
 
 ENTRYPOINT ["/app/frugi"]

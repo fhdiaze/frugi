@@ -5,12 +5,13 @@ import (
 	"net/http"
 
 	"github.com/fhdiaze/frugi/internal/core/money"
+	"github.com/fhdiaze/frugi/static"
 	"github.com/labstack/echo/v4"
 )
 
 var (
-	convertGetTemplate = template.Must(template.ParseFiles("web/templates/comps/frame.html", "web/templates/money/convert.html"))
-	convertOutTemplate = template.Must(template.ParseFiles("web/templates/comps/frame.html", "web/templates/money/convert_out.html"))
+	convertGetTemplate = template.Must(template.ParseFS(static.TemplatesFS, "templates/comps/frame.html", "templates/money/convert.html"))
+	convertOutTemplate = template.Must(template.ParseFS(static.TemplatesFS, "templates/comps/frame.html", "templates/money/convert_out.html"))
 )
 
 func RouteMoney(group *echo.Group) {
