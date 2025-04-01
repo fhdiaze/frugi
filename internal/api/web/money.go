@@ -17,6 +17,7 @@ var (
 func RouteMoney(group *echo.Group) {
 	group.GET("/money.convert.get", handleGetConvert)
 	group.POST("/money.convert.run", handleRunConvert)
+	group.GET("/money.compound.get", handleGetCompound)
 }
 
 func handleGetConvert(context echo.Context) error {
@@ -38,4 +39,13 @@ func handleRunConvert(context echo.Context) error {
 	}
 
 	return convertOutTemplate.ExecuteTemplate(context.Response(), "convert_out.html", u)
+}
+
+func handleGetCompound(context echo.Context) error {
+
+}
+
+func handleRunCompound(context echo.Context) error {
+	var cmd money.
+	cmd := con
 }

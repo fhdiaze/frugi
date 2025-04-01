@@ -9,13 +9,13 @@ import (
 func TestMoneyFromMajor(t *testing.T) {
 	// Arrange
 	amount := 5.3399333
-	wanted := types.MoneyFromMajor(amount)
+	var wanted int64 = 534
 
 	// Act
 	got := types.MoneyFromMajor(amount)
 
 	// Assert
-	if got != 534 {
-		t.Errorf("Output %q not equal to the expected %q", got, wanted)
+	if got.Minor() != wanted {
+		t.Errorf("Output %q not equal to the expected %q", got.Minor(), wanted)
 	}
 }

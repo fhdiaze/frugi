@@ -13,8 +13,7 @@ type RunConvertCmd struct {
 
 func HandleRunConvert(cmd *RunConvertCmd) (time.Duration, error) {
 	amount := types.MoneyFromMajor(cmd.Amount)
-	wage := types.MoneyFromMajor(cmd.HourlyWage)
-	hours := time.Duration(amount / wage)
+	hours := time.Duration(amount.Div(cmd.HourlyWage).ToFloat64())
 
 	return time.Hour * hours, nil
 }
