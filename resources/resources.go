@@ -1,4 +1,4 @@
-package rsrc
+package resources
 
 import "embed"
 

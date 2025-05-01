@@ -3,7 +3,7 @@ package web
 import (
 	"html/template"
 
-	"github.com/fhdiaze/frugi/static"
+	"github.com/fhdiaze/frugi/resources"
 	"github.com/labstack/echo/v4"
 )
 
@@ -12,7 +12,7 @@ type Command struct {
 }
 
 var (
-	cmdListTemplate = template.Must(template.ParseFS(static.TemplatesFS, "templates/comps/frame.html", "templates/cmd/list.html"))
+	cmdListTemplate = template.Must(template.ParseFS(resources.TemplatesFS, "templates/comps/frame.html", "templates/cmd/list.html"))
 )
 
 func RouteCmd(group *echo.Group) {

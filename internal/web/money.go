@@ -4,14 +4,14 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/fhdiaze/frugi/internal/core/money"
-	"github.com/fhdiaze/frugi/rsrc"
+	"github.com/fhdiaze/frugi/internal/commands"
+	"github.com/fhdiaze/frugi/resources"
 	"github.com/labstack/echo/v4"
 )
 
 var (
-	convertGetTemplate = template.Must(template.ParseFS(rsrc.TemplatesFS, "templates/comps/frame.html", "templates/money/convert.html"))
-	convertOutTemplate = template.Must(template.ParseFS(static.TemplatesFS, "templates/comps/frame.html", "templates/money/convert_out.html"))
+	convertGetTemplate = template.Must(template.ParseFS(resources.TemplatesFS, "templates/comps/frame.html", "templates/money/convert.html"))
+	convertOutTemplate = template.Must(template.ParseFS(resources.TemplatesFS, "templates/comps/frame.html", "templates/money/convert_out.html"))
 )
 
 func RouteMoney(group *echo.Group) {
@@ -25,14 +25,14 @@ func handleGetConvert(context echo.Context) error {
 }
 
 func handleRunConvert(context echo.Context) error {
-	var cmd money.RunConvertCmd
+	var cmd commands.RunConvertCmd
 	err := context.Bind(&cmd)
 
 	if err != nil {
 		return context.String(http.StatusInternalServerError, "Internal Server Error")
 	}
 
-	u, err := money.HandleRunConvert(&cmd)
+	u, err := commands.HandleRunConvert(&cmd)
 
 	if err != nil {
 		return err
@@ -42,10 +42,9 @@ func handleRunConvert(context echo.Context) error {
 }
 
 func handleGetCompound(context echo.Context) error {
-
+	return nil
 }
 
 func handleRunCompound(context echo.Context) error {
-	var cmd money.
-	cmd := con
+	return nil
 }

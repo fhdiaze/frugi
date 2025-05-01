@@ -1,4 +1,4 @@
-package price
+package commands
 
 type RunScaleCmd struct {
 	Items int     `form:"items"`

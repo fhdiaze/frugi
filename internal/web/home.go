@@ -3,12 +3,12 @@ package web
 import (
 	"html/template"
 
-	"github.com/fhdiaze/frugi/static"
+	"github.com/fhdiaze/frugi/resources"
 	"github.com/labstack/echo/v4"
 )
 
 var (
-	homeTemplate = template.Must(template.ParseFS(static.TemplatesFS,
+	homeTemplate = template.Must(template.ParseFS(resources.TemplatesFS,
 		"templates/comps/header.html", "templates/comps/footer.html", "templates/comps/base.html", "templates/home.html"))
 )
 
