@@ -1,18 +1,18 @@
-{{ define actions }}
-<button type="submit" hx-post="/money.compound.run" hx-target="next #result" hx-swap="innerHTML" hx-include="next #compound-form">►</button>
+{{ define "actions" }}
+<button type="submit" hx-post="/web/money.compound.run" hx-target="next #result" hx-swap="innerHTML" hx-include="next #compound-form">►</button>
 {{ end }}
 
-{{ define frame_actions }}
-<button hx-get="/money.compound.get" hx-target="#outputs" hx-swap="afterbegin" hx-replace-url="false">⧉</button>
+{{ define "frame_actions" }}
+<button hx-get="/web/money.compound.get" hx-target="#outputs" hx-swap="afterbegin" hx-replace-url="false">⧉</button>
 {{ end }}
 
-{{ define content }}
+{{ define "content" }}
 <h4>Compound money over time:</h4>
 <p>It allows compounding an amount of money over a period of time.</p>
 <form id="compound-form" class="form">
     <div class="form__input-pair">
-        <label for="amount">Amount:</label>
-        <input id="amount" name="amount" type="number" placeholder="Amount">
+        <label for="principal">Principal:</label>
+        <input id="principal" name="principal" type="number" placeholder="Principal">
     </div>
     <div class="form__input-pair">
         <label for="contribution">Contribution:</label>
@@ -29,13 +29,13 @@
     <div class="form__input-pair">
         <label for="frequency">Frequency:</label>
         <select id="frequency" name="frequency" type="text" placeholder="Frequency">
-            {% for frequency in frequencies %}
-            <option value="{{ frequency }}">{{ frequency }}</option>
-            {% endfor %}
+            {{ range .}}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
         </select>
     </div>
 </form>
 <div id="result" />
-{{ end} }
+{{ end }}
 
-{{ template "comps/frame.html" . }}
+{{ template "frame.html" . }}

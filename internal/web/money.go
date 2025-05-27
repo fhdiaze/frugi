@@ -45,7 +45,7 @@ func handleRunConvert(context echo.Context) error {
 }
 
 func handleGetCompound(context echo.Context) error {
-	return nil
+	return compoundGetTemplate.ExecuteTemplate(context.Response(), "compound.html", commands.AllFrequencyNames())
 }
 
 func handleRunCompound(context echo.Context) error {
@@ -54,7 +54,7 @@ func handleRunCompound(context echo.Context) error {
 		return err
 	}
 
-	result, err := commands.HandleRunCompound(&cmd)
+	result := commands.HandleRunCompound(&cmd)
 
-	return err
+	return compoundOutTemplate.ExecuteTemplate(context.Response(), "compound_out.html", result.ToFloat64())
 }
