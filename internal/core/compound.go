@@ -1,4 +1,4 @@
-package commands
+package core
 
 import (
 	"fmt"
@@ -58,6 +58,8 @@ func HandleRunCompound(cmd *RunCompoundCmd) types.Money {
 	compounds := annualCompounds[cmd.Frequency]
 	periodicInterestRate := cmd.InterestRate / 100.0 / float64(compounds)
 	accumulation := math.Pow(1+periodicInterestRate, float64(cmd.Years)*float64(compounds))
+	composedPrincipal := *cmd.Principal.Mul(accumulation)
+	composedContribution := *cmd.Contribution.Mul(accumulation - 1.0).Div(periodicInterestRate)
 
-	return cmd.Principal.Mul(accumulation).Add(cmd.Contribution.Mul(accumulation - 1.0).Div(periodicInterestRate))
+	return *composedPrincipal.Add(&composedContribution)
 }

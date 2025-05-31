@@ -4,7 +4,7 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/fhdiaze/frugi/internal/commands"
+	"github.com/fhdiaze/frugi/internal/core"
 	"github.com/fhdiaze/frugi/resources"
 	"github.com/labstack/echo/v4"
 )
@@ -24,13 +24,13 @@ func handleGetScale(context echo.Context) error {
 }
 
 func handleRunScale(context echo.Context) error {
-	var cmd commands.RunScaleCmd
+	var cmd core.RunScaleCmd
 
 	if err := context.Bind(&cmd); err != nil {
 		return context.String(http.StatusBadRequest, "bad request")
 	}
 
-	u, err := commands.HandleRunScale(&cmd)
+	u, err := core.HandleRunScale(&cmd)
 	if err != nil {
 		return err
 	}

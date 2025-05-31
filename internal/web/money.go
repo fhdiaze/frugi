@@ -4,7 +4,7 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/fhdiaze/frugi/internal/commands"
+	"github.com/fhdiaze/frugi/internal/core"
 	"github.com/fhdiaze/frugi/resources"
 	"github.com/labstack/echo/v4"
 )
@@ -28,14 +28,14 @@ func handleGetConvert(context echo.Context) error {
 }
 
 func handleRunConvert(context echo.Context) error {
-	var cmd commands.RunConvertCmd
+	var cmd core.RunConvertCmd
 	err := context.Bind(&cmd)
 
 	if err != nil {
 		return context.String(http.StatusInternalServerError, "Internal Server Error")
 	}
 
-	u, err := commands.HandleRunConvert(&cmd)
+	u, err := core.HandleRunConvert(&cmd)
 
 	if err != nil {
 		return err
@@ -45,16 +45,16 @@ func handleRunConvert(context echo.Context) error {
 }
 
 func handleGetCompound(context echo.Context) error {
-	return compoundGetTemplate.ExecuteTemplate(context.Response(), "compound.html", commands.AllFrequencyNames())
+	return compoundGetTemplate.ExecuteTemplate(context.Response(), "compound.html", core.AllFrequencyNames())
 }
 
 func handleRunCompound(context echo.Context) error {
-	var cmd commands.RunCompoundCmd
+	var cmd core.RunCompoundCmd
 	if err := context.Bind(&cmd); err != nil {
 		return err
 	}
 
-	result := commands.HandleRunCompound(&cmd)
+	result := core.HandleRunCompound(&cmd)
 
-	return compoundOutTemplate.ExecuteTemplate(context.Response(), "compound_out.html", result.ToFloat64())
+	return compoundOutTemplate.ExecuteTemplate(context.Response(), "compound_out.html", result.Major())
 }
